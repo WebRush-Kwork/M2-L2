@@ -1,13 +1,13 @@
 
 import telebot
 from config import token
-# Задание 1 - испортируй команду defaultdict
+# Задание 8 - испортируй команду defaultdict
 from logic import quiz_questions
 
 TELEGRAM_TOKEN = token
 
 user_responses = {} 
-# Задание 2 - создай словарь points для сохранения количества очков пользователя
+# Задание 9 - создай словарь points для сохранения количества очков пользователя
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
@@ -19,13 +19,13 @@ def callback_query(call):
 
     if call.data == "correct":
         bot.answer_callback_query(call.id, "Answer is correct")
-        # Задание 3 - добавь очки пользователю за правильный ответ
+        # Задание 10 - добавь очки пользователю за правильный ответ
     elif call.data == "wrong":
         bot.answer_callback_query(call.id,  "Answer is wrong")
       
-    # Задание 4 - реализуй счетчик вопросов
+    # Задание 6 - реализуй счетчик вопросов
 
-    # Задание 5 - отправь пользователю сообщение с количеством его набранных очков, если он ответил на все вопросы, а иначе отправь следующий вопрос
+    # Задание 7 - отправь пользователю сообщение с количеством его набранных очков, если он ответил на все вопросы, а иначе отправь следующий вопрос
 
 
 @bot.message_handler(commands=['start'])
