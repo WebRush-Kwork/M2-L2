@@ -1,4 +1,7 @@
 # Задание 2 - Импортируй нужные классы
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 
 class Question:
 
