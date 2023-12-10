@@ -13,7 +13,7 @@ bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
 
 def send_question(chat_id):
-    bot.send_message(chat_id, quiz_questions[user_responses[chat_id]].text,
+    bot.send_message(chat_id, quiz_questions[user_responses[chat_id]].get_text,
                      reply_markup=quiz_questions[user_responses[chat_id]].gen_markup())
 
 
@@ -21,10 +21,10 @@ def send_question(chat_id):
 def callback_query(call):
 
     if call.data == "correct":
-        bot.answer_callback_query(call.id, "Ответ неверный! ❌")
+        bot.answer_callback_query(call.id,  "Ответ неверный! ✅")
         # Задание 9 - добавь очки пользователю за правильный ответ
     elif call.data == "wrong":
-        bot.answer_callback_query(call.id,  "Ответ неверный! ✅")
+        bot.answer_callback_query(call.id, "Ответ неверный! ❌")
 
     # Задание 5 - реализуй счетчик вопросов
     user_responses[call.message.chat.id] += 1
