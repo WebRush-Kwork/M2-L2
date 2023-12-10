@@ -21,12 +21,13 @@ def send_question(chat_id):
 def callback_query(call):
 
     if call.data == "correct":
-        bot.answer_callback_query(call.id, "Answer is correct")
+        bot.answer_callback_query(call.id, "Ответ неверный! ❌")
         # Задание 9 - добавь очки пользователю за правильный ответ
     elif call.data == "wrong":
-        bot.answer_callback_query(call.id,  "Answer is wrong")
+        bot.answer_callback_query(call.id,  "Ответ неверный! ✅")
 
     # Задание 5 - реализуй счетчик вопросов
+    user_responses[call.message.chat.id]+=1
 
     # Задание 6 - отправь пользователю сообщение с количеством его набранных очков, если он ответил на все вопросы, а иначе отправь следующий вопрос
 
