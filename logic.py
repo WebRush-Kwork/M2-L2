@@ -1,6 +1,5 @@
-# Задание 2 - Импортируй нужные классы
 import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 class Question:
@@ -10,13 +9,11 @@ class Question:
         self.__answer_id = answer_id
         self.options = options
 
-    # Задание 1 - Создай геттер для получения текста вопроса
     @property
-    def get_text(self):
+    def text(self):
         return self.__text
 
     def gen_markup(self):
-        # Задание 3 - Создай метод для генерации Inline клавиатуры
         markup = InlineKeyboardMarkup()
         markup.row_width = 1
 
@@ -29,7 +26,6 @@ class Question:
         return markup
 
 
-# Задание 4 - заполни список своими вопросами
 quiz_questions = [
     Question("Сколько планет на земле?", 0, "8", "7"),
     Question("В какой стране наибольшее население?",
