@@ -8,10 +8,14 @@ class Question:
         self.options = options
 
     # Задание 1 - Создай геттер для получения текста вопроса
-    
+    @property
+    def get_text(self):
+        return self.__text
+
     def gen_markup(self):
         # Задание 3 - Создай метод для генерации Inline клавиатуры
         return markup
+
 
 # Задание 4 - заполни список своими вопросами
 quiz_questions = [
