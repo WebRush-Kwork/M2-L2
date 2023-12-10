@@ -17,6 +17,12 @@ def send_question(chat_id):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
+    chat_id = call.message.chat.id
+    message_id = call.message.message_id
+    bot.edit_message_reply_markup(
+        chat_id=chat_id, message_id=message_id, reply_markup=None)
+    bot.delete_message(chat_id=chat_id, message_id=message_id)
+
     if call.data == "correct":
         bot.answer_callback_query(call.id,  "Ответ верный! ✅")
         points["user"] += 1

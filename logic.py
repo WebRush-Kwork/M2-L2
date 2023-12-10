@@ -20,9 +20,9 @@ class Question:
         for i, option in enumerate(self.options):
             if i == self.__answer_id:
                 markup.add(InlineKeyboardButton(
-                    option, callback_data='correct'))
+                    option, callback_data="correct"))
             else:
-                markup.add(InlineKeyboardButton(option, callback_data='wrong'))
+                markup.add(InlineKeyboardButton(option, callback_data="wrong"))
         return markup
 
 
