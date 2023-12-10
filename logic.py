@@ -17,6 +17,15 @@ class Question:
 
     def gen_markup(self):
         # Задание 3 - Создай метод для генерации Inline клавиатуры
+        markup = InlineKeyboardMarkup()
+        markup.row_width = 1
+
+        for i, option in enumerate(self.options):
+            if i == self.__answer_id:
+                markup.add(InlineKeyboardButton(
+                    option, callback_data='correct'))
+            else:
+                markup.add(InlineKeyboardButton(option, callback_data='wrong'))
         return markup
 
 
