@@ -1,15 +1,13 @@
+from collections import defaultdict
+
 import telebot
 
 from config import token
-from collections import defaultdict
 from logic import quiz_questions
 
-TELEGRAM_TOKEN = token
-
 user_responses = {}
-# Задание 8 - создай словарь points для сохранения количества очков пользователя
-
-bot = telebot.TeleBot(TELEGRAM_TOKEN)
+points = defaultdict(int)
+bot = telebot.TeleBot(token)
 
 
 def send_question(chat_id):
@@ -19,10 +17,8 @@ def send_question(chat_id):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
-
     if call.data == "correct":
         bot.answer_callback_query(call.id,  "Ответ верный! ✅")
-        # Задание 9 - добавь очки пользователю за правильный ответ
     else:
         bot.answer_callback_query(call.id, "Ответ неверный! ❌")
 
@@ -30,7 +26,7 @@ def callback_query(call):
 
     if user_responses[call.message.chat.id] >= len(quiz_questions):
         bot.send_message(call.message.chat.id,
-                         "Квиз завершен, Вы справились! ⚡️")
+                         f"Квиз завершен, Вы справились! ⚡️\nКоличество очков: {points['user']}")
     else:
         send_question(call.message.chat.id)
 
