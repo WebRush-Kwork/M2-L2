@@ -19,6 +19,7 @@ def send_question(chat_id):
 def callback_query(call):
     if call.data == "correct":
         bot.answer_callback_query(call.id,  "Ответ верный! ✅")
+        points["user"] += 1
     else:
         bot.answer_callback_query(call.id, "Ответ неверный! ❌")
 
